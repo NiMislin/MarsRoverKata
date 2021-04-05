@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverKata", "MarsRoverKata\MarsRoverKata.csproj", "{1B929E3A-9280-40C4-BB1C-789BEEA3623C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverKata.UnitTest", "MarsRoverKata.UnitTest\MarsRoverKata.UnitTest.csproj", "{1C4C259A-A4FC-459E-89C0-4E2F13E37212}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1B929E3A-9280-40C4-BB1C-789BEEA3623C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B929E3A-9280-40C4-BB1C-789BEEA3623C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B929E3A-9280-40C4-BB1C-789BEEA3623C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B929E3A-9280-40C4-BB1C-789BEEA3623C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4C259A-A4FC-459E-89C0-4E2F13E37212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4C259A-A4FC-459E-89C0-4E2F13E37212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4C259A-A4FC-459E-89C0-4E2F13E37212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4C259A-A4FC-459E-89C0-4E2F13E37212}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
