@@ -7,7 +7,7 @@ namespace MarsRoverKata
         {
         }
 
-        public override Position Move(Direction direction, int[,] grid)
+        public override Position Move(Direction direction, Grid grid)
         {
             //do nothing
             return this;

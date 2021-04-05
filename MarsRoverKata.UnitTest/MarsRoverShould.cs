@@ -8,8 +8,8 @@ namespace MarsRoverKata.UnitTest
 
         public MarsRoverShould()
         {
-            var grid = new int[10, 10];
-            grid[2, 2] = 1;
+            var grid = new Grid(10, 10);
+            grid.AddObstacle(2,2);
             _marsRover = new MarsRover(grid);
         }
         
@@ -18,12 +18,13 @@ namespace MarsRoverKata.UnitTest
         {
             //arrange
             var command = string.Empty;
+            var expected = "0:0:N";
 
             //act
-            var position = _marsRover.Execute(command);
+            _marsRover.Execute(command);
 
             //assert
-            Assert.Equal("0:0:N", position);
+            Assert.Equal(expected, _marsRover.GetCurrentPosition());
         }
 
         [Theory]
@@ -34,10 +35,10 @@ namespace MarsRoverKata.UnitTest
         public void TurnRight(string commands, string expected)
         {
             //act
-            var actual = _marsRover.Execute(commands);
+            _marsRover.Execute(commands);
 
             //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, _marsRover.GetCurrentPosition());
         }
         
         [Theory]
@@ -48,10 +49,10 @@ namespace MarsRoverKata.UnitTest
         public void TurnLeft(string commands, string expected)
         {
             //act
-            var actual = _marsRover.Execute(commands);
+            _marsRover.Execute(commands);
 
             //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, _marsRover.GetCurrentPosition());
         }
 
         [Theory]
@@ -66,10 +67,10 @@ namespace MarsRoverKata.UnitTest
         public void Move(string commands, string expected)
         {
             //act 
-            var actual = _marsRover.Execute(commands);
+            _marsRover.Execute(commands);
             
             //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, _marsRover.GetCurrentPosition());
         }
 
         [Fact]
@@ -80,10 +81,10 @@ namespace MarsRoverKata.UnitTest
             var expected = "O:2:1:E";
             
             //act 
-            var actual = _marsRover.Execute(commands);
+            _marsRover.Execute(commands);
             
             //assert
-            Assert.Equal(expected, actual);
+            Assert.Equal(expected, _marsRover.GetCurrentPosition());
         }
     }
 }

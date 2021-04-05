@@ -11,7 +11,7 @@ namespace MarsRoverKata
             Y = y;
         }
 
-        public abstract Position Move(Direction direction, int[,] grid);
+        public abstract Position Move(Direction direction, Grid grid);
 
         public virtual string GetPosition()
         {

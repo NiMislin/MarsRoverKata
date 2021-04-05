@@ -8,32 +8,30 @@ namespace MarsRoverKata
         {
         }
 
-        public override Position Move(Direction direction, int[,] grid)
+        public override Position Move(Direction direction, Grid grid)
         {
-            var newY = Y;
-            var newX = X;
-            switch (direction.Cardinal)
+            var newPosition = (X, Y);
+            
+            newPosition.Y = grid.GetYAxisPosition(direction.Cardinal switch
             {
-                case CardinalDirection.N:
-                    newY = Y + 1 > grid.GetUpperBound(0) ? 0 : Y + 1;
-                    break;
-                case CardinalDirection.S:
-                    newY = Y - 1 < 0 ? grid.GetUpperBound(0) : Y - 1;
-                    break;
-                case CardinalDirection.W:
-                    newX = X - 1 < 0 ? grid.GetUpperBound(1) : X - 1;
-                    break;
-                case CardinalDirection.E:
-                    newX = X + 1 > grid.GetUpperBound(1) ? 0 : X + 1;
-                    break;
-            }
+                CardinalDirection.N => Y + 1,
+                CardinalDirection.S => Y - 1,
+                _ => newPosition.Y
+            });
+            
+            newPosition.X = grid.GetXAxisPosition(direction.Cardinal switch
+            {
+                CardinalDirection.W => X - 1,
+                CardinalDirection.E => X + 1,
+                _ => newPosition.X
+            });
 
-            if (grid[newY, newX] == 1)
+            if (grid.IsObstacle(newPosition.X, newPosition.Y))
             {
                 return new StoppedPosition(X, Y);
             }
             
-            return new MobilePosition(newX, newY);
+            return new MobilePosition(newPosition.X, newPosition.Y);
         }
     }
 }

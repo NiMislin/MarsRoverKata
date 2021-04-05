@@ -9,7 +9,7 @@ namespace MarsRoverKata
         private Direction _direction;
         private readonly IDictionary<char, Action> _commandDictionary;
 
-        public MarsRover(int[,] grid)
+        public MarsRover(Grid grid)
         {
             _position = new MobilePosition(0, 0);
             _direction = new Direction(CardinalDirection.N);
@@ -21,13 +21,16 @@ namespace MarsRoverKata
             };
         }
 
-        public string Execute(string commands)
+        public void Execute(string commands)
         {
             foreach (var command in commands)
             {
                 _commandDictionary[command]();
             }
+        }
 
+        public string GetCurrentPosition()
+        {
             return $"{_position.GetPosition()}:{_direction.Cardinal}";
         }
     }
