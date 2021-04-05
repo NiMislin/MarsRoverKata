@@ -7,15 +7,18 @@ namespace MarsRoverKata
     {
         private Position _position;
         private Direction _direction;
+        private bool _obstacleDetected;
         private readonly IDictionary<char, Action> _commandDictionary;
+        public string CurrentPosition => $"{(_obstacleDetected?"O:":string.Empty)}{_position.GetPosition()}:{_direction.Cardinal}";
 
         public MarsRover(Grid grid)
         {
-            _position = new MobilePosition(0, 0);
+            _obstacleDetected = false;
+            _position = new Position(0, 0);
             _direction = new Direction(CardinalDirection.N);
             _commandDictionary = new Dictionary<char, Action>()
             {
-                {'M', () => _position = _position.Move(_direction, grid)},
+                {'M', () => _position = _position.Change(_direction, grid)},
                 {'R', () => _direction = _direction.GetRight()},
                 {'L', () => _direction = _direction.GetLeft()}
             };
@@ -23,15 +26,18 @@ namespace MarsRoverKata
 
         public void Execute(string commands)
         {
-            foreach (var command in commands)
+            try
             {
-                _commandDictionary[command]();
+                foreach (var command in commands)
+                {
+                    _commandDictionary[command]();
+                }
+            }
+            catch (ObstacleDetectedException)
+            {
+                _obstacleDetected = true;
             }
         }
 
-        public string GetCurrentPosition()
-        {
-            return $"{_position.GetPosition()}:{_direction.Cardinal}";
-        }
     }
 }

@@ -24,7 +24,7 @@ namespace MarsRoverKata.UnitTest
             _marsRover.Execute(command);
 
             //assert
-            Assert.Equal(expected, _marsRover.GetCurrentPosition());
+            Assert.Equal(expected, _marsRover.CurrentPosition);
         }
 
         [Theory]
@@ -38,7 +38,7 @@ namespace MarsRoverKata.UnitTest
             _marsRover.Execute(commands);
 
             //assert
-            Assert.Equal(expected, _marsRover.GetCurrentPosition());
+            Assert.Equal(expected, _marsRover.CurrentPosition);
         }
         
         [Theory]
@@ -52,7 +52,7 @@ namespace MarsRoverKata.UnitTest
             _marsRover.Execute(commands);
 
             //assert
-            Assert.Equal(expected, _marsRover.GetCurrentPosition());
+            Assert.Equal(expected, _marsRover.CurrentPosition);
         }
 
         [Theory]
@@ -70,7 +70,7 @@ namespace MarsRoverKata.UnitTest
             _marsRover.Execute(commands);
             
             //assert
-            Assert.Equal(expected, _marsRover.GetCurrentPosition());
+            Assert.Equal(expected, _marsRover.CurrentPosition);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace MarsRoverKata.UnitTest
             _marsRover.Execute(commands);
             
             //assert
-            Assert.Equal(expected, _marsRover.GetCurrentPosition());
+            Assert.Equal(expected, _marsRover.CurrentPosition);
         }
     }
 }
