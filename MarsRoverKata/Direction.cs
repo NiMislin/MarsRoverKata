@@ -2,33 +2,38 @@ namespace MarsRoverKata
 {
     public class Direction
     {
+        public static Direction GetNorth()
+        {
+            var north = new Direction(CardinalDirection.N);
+            var south = new Direction(CardinalDirection.S);
+            var east = new Direction(CardinalDirection.E);
+            var west = new Direction(CardinalDirection.W);
+            north.SetRight(east);
+            east.SetRight(south);
+            south.SetRight(west);
+            west.SetRight(north);
+            return north;
+        }
+        
+        public Direction Left { get; private set; }
+        public Direction Right { get; private set; }
         public CardinalDirection Cardinal { get; }
 
-        public Direction(CardinalDirection cardinal)
+        private Direction(CardinalDirection cardinal)
         {
             Cardinal = cardinal;
         }
 
-        public Direction GetRight()
+        private void SetLeft(Direction direction)
         {
-            return new(Cardinal switch
-            {
-                CardinalDirection.N => CardinalDirection.E,
-                CardinalDirection.E => CardinalDirection.S,
-                CardinalDirection.S => CardinalDirection.W,
-                _ =>  CardinalDirection.N
-            });
+            Left = direction;
         }
 
-        public Direction GetLeft()
+        private void SetRight(Direction direction)
         {
-            return new(Cardinal switch
-            {
-                CardinalDirection.N => CardinalDirection.W,
-                CardinalDirection.W => CardinalDirection.S,
-                CardinalDirection.S=> CardinalDirection.E,
-                _ =>  CardinalDirection.N
-            });
+            Right = direction;
+            direction.SetLeft(this);
         }
+
     }
 }

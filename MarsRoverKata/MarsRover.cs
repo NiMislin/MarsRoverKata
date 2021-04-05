@@ -13,14 +13,13 @@ namespace MarsRoverKata
 
         public MarsRover(Grid grid)
         {
-            _obstacleDetected = false;
             _position = new Position(0, 0);
-            _direction = new Direction(CardinalDirection.N);
+            _direction = Direction.GetNorth();
             _commandDictionary = new Dictionary<char, Action>()
             {
                 {'M', () => _position = _position.Change(_direction, grid)},
-                {'R', () => _direction = _direction.GetRight()},
-                {'L', () => _direction = _direction.GetLeft()}
+                {'R', () => _direction = _direction.Right},
+                {'L', () => _direction = _direction.Left}
             };
         }
 
@@ -28,6 +27,7 @@ namespace MarsRoverKata
         {
             try
             {
+                _obstacleDetected = false;
                 foreach (var command in commands)
                 {
                     _commandDictionary[command]();
